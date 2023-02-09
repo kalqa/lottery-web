@@ -15,12 +15,12 @@ phases:
       - echo Build started on `date`
       - echo Building the Docker compose image...
       - docker-compose build
-      - docker tag lottery-web_lotto:latest 054968576252.dkr.ecr.eu-central-1.amazonaws.com/lottery-web_lotto:latest
+      - docker tag lottery-web_lotto:latest 054968576252.dkr.ecr.eu-central-1.amazonaws.com/lotto:latest
   post_build:
     commands:
       - echo Build completed on `date`
       - echo Pushing the Docker images...
-      - docker push 054968576252.dkr.ecr.eu-central-1.amazonaws.com/lottery-web_lotto:latest
+      - docker push 054968576252.dkr.ecr.eu-central-1.amazonaws.com/lotto
 artifacts:
   files:
     - target/lotto-web.jar
