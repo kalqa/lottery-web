@@ -14,20 +14,20 @@ services:
       - ./init-mongo.js:/docker-entrypoint-initdb.d/init-mongo.js:ro
     networks:
       - lotto-net
-
-  lotto:
-    container_name: lotto
-    build: .
-    #    image: 054968576252.dkr.ecr.eu-central-1.amazonaws.com/lotto:latest
-    restart: always
-    ports:
-      - '8000:8000'
-    environment:
-      - MONGO_HOST=mongo_db
-    depends_on:
-      - mongo_db
-    networks:
-      - lotto-net
+#
+#  lotto:
+#    container_name: lotto
+#    build: .
+#    #    image: 054968576252.dkr.ecr.eu-central-1.amazonaws.com/lotto:latest
+#    restart: always
+#    ports:
+#      - '8000:8000'
+#    environment:
+#      - MONGO_HOST=mongo_db
+#    depends_on:
+#      - mongo_db
+#    networks:
+#      - lotto-net
 
 networks:
   lotto-net:
