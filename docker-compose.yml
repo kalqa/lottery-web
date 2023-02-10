@@ -1,19 +1,19 @@
 version: '3.1'
 
 services:
-  mongo_db:
-    image: mongo:4.0.10
-    restart: always
-    ports:
-      - "27017:27017"
-    environment:
-      MONGO_INITDB_ROOT_USERNAME: root
-      MONGO_INITDB_ROOT_PASSWORD: example
-      MONGO_INITDB_DATABASE: lotto-web
-    volumes:
-      - ./init-mongo.js:/docker-entrypoint-initdb.d/init-mongo.js:ro
-    networks:
-      - lotto-net
+#  mongo_db:
+#    image: mongo:4.0.10
+#    restart: always
+#    ports:
+#      - "27017:27017"
+#    environment:
+#      MONGO_INITDB_ROOT_USERNAME: root
+#      MONGO_INITDB_ROOT_PASSWORD: example
+#      MONGO_INITDB_DATABASE: lotto-web
+#    volumes:
+#      - ./init-mongo.js:/docker-entrypoint-initdb.d/init-mongo.js:ro
+#    networks:
+#      - lotto-net
 
   lotto:
     container_name: lotto
@@ -22,13 +22,11 @@ services:
     restart: always
     ports:
       - '8000:8000'
-    environment:
-      - MONGO_HOST=mongo_db
-    depends_on:
-      - mongo_db
-    networks:
-      - lotto-net
+#    depends_on:
+#      - mongo_db
+#    networks:
+#      - lotto-net
 
-networks:
-  lotto-net:
-    driver: bridge
+#networks:
+#  lotto-net:
+#    driver: bridge
