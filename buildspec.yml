@@ -20,7 +20,7 @@ phases:
     commands:
       - echo Build completed on `date`
       - echo Pushing the Docker images...
-      - docker-compose push 054968576252.dkr.ecr.eu-central-1.amazonaws.com/lotto:latest
+      - docker push 054968576252.dkr.ecr.eu-central-1.amazonaws.com/lotto:latest
 artifacts:
   files:
     - target/lotto-web.jar
