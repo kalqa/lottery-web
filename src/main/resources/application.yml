@@ -4,8 +4,7 @@ spring:
   data:
     mongodb:
       uuid-representation: standard
-      uri: mongodb://admin:admin@mongo_db/lotto-web   # mongodb://[username:password@]host1[:port1]/[database-name]
-      host: localhost
+      uri: mongodb://admin:admin@mongo_db:27017/lotto-web   # mongodb://[username:password@]host1[:port1]/[database-name]
   cache:
     redis:
       time-to-live: 60  # minutes of ttl for cached item
