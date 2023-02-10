@@ -12,6 +12,8 @@ services:
       MONGO_INITDB_DATABASE: lotto-web
     volumes:
       - ./init-mongo.js:/docker-entrypoint-initdb.d/init-mongo.js:ro
+    networks:
+      - lotto-net
 
   lotto:
     container_name: lotto
@@ -24,3 +26,9 @@ services:
       - MONGO_HOST=mongo_db
     depends_on:
       - mongo_db
+    networks:
+      - lotto-net
+
+networks:
+  lotto-net:
+    driver: bridge
