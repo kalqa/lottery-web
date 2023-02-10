@@ -26,7 +26,8 @@ lotto:
     maxWinNumber: ${lotto.input.maxNumber}
     winNumberCount: ${lotto.input.numberCount}
     #lotteryRunOccurrence: "${lotto.time.drawSeconds} ${lotto.time.drawMinutes} ${lotto.time.drawHour} * * ${lotto.time.drawDayOfWeek}"
-    lotteryRunOccurrence: "*/2 * * * * *"
+#    lotteryRunOccurrence: "*/2 * * * * *"
+    lotteryRunOccurrence: ${lotto.time.drawSeconds} ${lotto.time.drawMinutes} ${lotto.time.drawHour} * * ${lotto.time.drawDayOfWeek}
   checker:
     matchedNumbersToWin: 3
 
