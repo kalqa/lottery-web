@@ -1,35 +1,26 @@
-# Use root/example as user/password credentials
 version: '3.1'
 
 services:
-  # actual database image
-  mongo:
-    container_name: mongo_db
+  mongo_db:
     image: mongo:4.0.10
     restart: always
     ports:
-      - "27017:27017"  # port forwarding
+      - "27017:27017"
     environment:
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: example
       MONGO_INITDB_DATABASE: lotto-web
     volumes:
       - ./init-mongo.js:/docker-entrypoint-initdb.d/init-mongo.js:ro
-    networks:
-      - lotto-net
 
   lotto:
     container_name: lotto
     build: .
-#    image: 054968576252.dkr.ecr.eu-central-1.amazonaws.com/lotto:latest
+    #    image: 054968576252.dkr.ecr.eu-central-1.amazonaws.com/lotto:latest
     restart: always
     ports:
       - '8000:8000'
-    networks:
-      - lotto-net
+    environment:
+      - MONGO_HOST=mongo_db
     depends_on:
-      - mongo
-
-networks:
-  lotto-net:
-    driver: bridge
+      - mongo_db
