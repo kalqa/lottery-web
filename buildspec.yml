@@ -20,7 +20,11 @@ phases:
     commands:
       - echo Build completed on `date`
       - echo Pushing the Docker images...
-      - docker push 054968576252.dkr.ecr.eu-central-1.amazonaws.com/lotto
+      - docker push 054968576252.dkr.ecr.eu-central-1.amazonaws.com/lotto:latest
+      - echo Writing image definitions file...
+      - printf '[{"name":"lotto-compose","imageUri":"%s"}]' 054968576252.dkr.ecr.eu-central-1.amazonaws.com/lotto:latest > imagedefinitions.json
+      - cat imagedefinitions.json
 artifacts:
   files:
+    - imagedefinitions.json
     - target/lotto-web.jar
