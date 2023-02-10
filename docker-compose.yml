@@ -30,10 +30,6 @@ services:
     depends_on:
       - mongo
 
-volumes:
-  redis:
-    driver: local
-
 networks:
   lotto-net:
     driver: bridge
