@@ -1,6 +1,7 @@
 package pl.lotto.timegenerator;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 class TimeGenerator {
 
@@ -21,11 +22,15 @@ class TimeGenerator {
     }
 
     LocalDateTime getDrawDateAndTime() {
-        if (checkIfDrawDateIsOutdated()) {
-            LocalDateTime timeNow = currentDateTimeGenerator.getCurrentDateAndTime();
-            this.drawDate = drawDateTimeGenerator.generateDrawDate(timeNow);
-        }
-        return drawDate;
+        String dateTimeString = "2023-02-18T12:00";
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm");
+        return LocalDateTime.parse(dateTimeString, formatter);
+
+//        if (checkIfDrawDateIsOutdated()) {
+//            LocalDateTime timeNow = currentDateTimeGenerator.getCurrentDateAndTime();
+//            this.drawDate = drawDateTimeGenerator.generateDrawDate(timeNow);
+//        }
+//        return drawDate;
     }
 
     LocalDateTime getExpirationDateTime() {

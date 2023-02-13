@@ -23,7 +23,6 @@ public class WinningNumberGeneratorConfiguration {
     }
 
     @Bean
-    @Profile("production")
     RandomNumbersGenerator createRandomNumberGenerator(WinningPropertyConfigurable propertyConfig){
         return new RandomNumbersGenerator(propertyConfig);
     }

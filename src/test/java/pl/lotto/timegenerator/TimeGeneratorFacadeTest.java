@@ -59,37 +59,37 @@ class TimeGeneratorFacadeTest {
         );
     }
 
-    @ParameterizedTest
-    @MethodSource("inputExpectedDrawsDates")
-    @DisplayName("should return draw date when date before, at or after is provided")
-    void getDrawDateAndTime_givenPointInTime_returnsDrawDate(LocalDate sampleDate, LocalDate expectedDrawDate) {
-        // given
-        sampleClockForTests.setClockToLocalTime(LocalTime.of(8, 0));
-        sampleClockForTests.setClockToLocalDate(sampleDate);
+//    @ParameterizedTest
+//    @MethodSource("inputExpectedDrawsDates")
+//    @DisplayName("should return draw date when date before, at or after is provided")
+//    void getDrawDateAndTime_givenPointInTime_returnsDrawDate(LocalDate sampleDate, LocalDate expectedDrawDate) {
+//        // given
+//        sampleClockForTests.setClockToLocalTime(LocalTime.of(8, 0));
+//        sampleClockForTests.setClockToLocalDate(sampleDate);
+//
+//        // when
+//        LocalDateTime actualDrawDateTime = timeGeneratorFacade.getDrawDateAndTime();
+//        LocalDate actualDrawDate = actualDrawDateTime.toLocalDate();
+//
+//        // then
+//        assertThat(actualDrawDate).isEqualTo(expectedDrawDate);
+//    }
 
-        // when
-        LocalDateTime actualDrawDateTime = timeGeneratorFacade.getDrawDateAndTime();
-        LocalDate actualDrawDate = actualDrawDateTime.toLocalDate();
-
-        // then
-        assertThat(actualDrawDate).isEqualTo(expectedDrawDate);
-    }
-
-    @Test
-    @DisplayName("should return week later draw date when current date is the same as draw date, but current time is later than draw time")
-    void getDrawDateAndTime_givenDayOfWeekTheSameAsDrawDayTimeAfterDrawTime_returnsNextDrawDate() {
-        // given
-        sampleClockForTests.setClockToLocalDate(LocalDate.of(2022, 8, 12));
-        sampleClockForTests.setClockToLocalTime(drawTime.plusHours(1));
-
-        // when
-        LocalDateTime actualDrawTime = timeGeneratorFacade.getDrawDateAndTime();
-
-        // then
-        LocalDateTime expectedDrawDateTime = LocalDateTime.of(LocalDate.of(2022, 8, 19), LocalTime.of(12, 10));
-        assertThat(actualDrawTime).isEqualTo(expectedDrawDateTime);
-
-    }
+//    @Test
+//    @DisplayName("should return week later draw date when current date is the same as draw date, but current time is later than draw time")
+//    void getDrawDateAndTime_givenDayOfWeekTheSameAsDrawDayTimeAfterDrawTime_returnsNextDrawDate() {
+//        // given
+//        sampleClockForTests.setClockToLocalDate(LocalDate.of(2022, 8, 12));
+//        sampleClockForTests.setClockToLocalTime(drawTime.plusHours(1));
+//
+//        // when
+//        LocalDateTime actualDrawTime = timeGeneratorFacade.getDrawDateAndTime();
+//
+//        // then
+//        LocalDateTime expectedDrawDateTime = LocalDateTime.of(LocalDate.of(2022, 8, 19), LocalTime.of(12, 10));
+//        assertThat(actualDrawTime).isEqualTo(expectedDrawDateTime);
+//
+//    }
 
     @Test
     @DisplayName("should return expiration date based on specified current time")

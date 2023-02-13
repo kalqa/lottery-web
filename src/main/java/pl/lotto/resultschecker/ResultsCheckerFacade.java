@@ -28,9 +28,9 @@ public class ResultsCheckerFacade {
     public int generateLotteryResultsForDrawDate(LocalDateTime drawDate) {
         WinningNumbersDto winningNumbersDto = winningNumbersFacade.getWinningNumbersForDate(drawDate);
         int generatedResultsCount = 0;
-        if (winningNumbersDto.status() != WinNumberStatus.SAVED) {
-            return generatedResultsCount;
-        }
+//        if (winningNumbersDto.status() != WinNumberStatus.SAVED) {
+//            return generatedResultsCount;
+//        }
         List<ReceiverResponseDto> receiverResponseDtoForDrawDate = numberReceiverFacade.getUserCouponListForDrawDate(drawDate);
         List<LotteryResults> listOfLotteryResults = lotteryResultsGenerator.getListOfLotteryResults(receiverResponseDtoForDrawDate,
                 winningNumbersDto.winningNumbers());

@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import pl.lotto.numberreceiver.NumberReceiverFacade;
 import pl.lotto.numberreceiver.dto.ReceiverRequestDto;
+import pl.lotto.numberreceiver.dto.ReceiverResponse2Dto;
 import pl.lotto.numberreceiver.dto.ReceiverResponseDto;
 
 @RestController
@@ -19,9 +20,17 @@ public class NumberReceiverRestController {
     }
 
     @PostMapping(value = "/api/v1/receiver")
-    public ResponseEntity<ReceiverResponseDto> inputNumbers(@RequestBody ReceiverRequestDto receiverRequestDto){
+    public ResponseEntity<ReceiverResponse2Dto> inputNumbers(@RequestBody ReceiverRequestDto receiverRequestDto){
         ReceiverResponseDto receiverResponseDto = numberReceiverFacade.inputNumbers(receiverRequestDto.getTypedNumbers());
-        return new ResponseEntity<>(receiverResponseDto, HttpStatus.OK);
+        ReceiverResponse2Dto receiverResponse2Dto = new ReceiverResponse2Dto(
+                receiverResponseDto.uuid(),
+                receiverResponseDto.creationDateTime().toString(),
+                receiverResponseDto.drawDateTime().toString(),
+                receiverResponseDto.expirationDateTime().toString(),
+                receiverResponseDto.typedNumbers(),
+                receiverResponseDto.status()
+                );
+        return new ResponseEntity<>(receiverResponse2Dto, HttpStatus.OK);
     }
 
 }
